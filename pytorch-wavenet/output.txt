@@ -1,0 +1,1094 @@
+use gpu
+load model snapshots/chaconne_model_2022-05-08_00-33-28
+model:  WaveNetModel(
+  (filter_convs): ModuleList(
+    (0): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (1): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (2): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (3): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (4): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (5): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (6): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (7): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (8): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (9): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (10): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (11): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (12): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (13): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (14): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (15): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (16): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (17): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (18): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (19): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (20): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (21): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (22): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (23): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (24): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (25): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (26): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (27): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (28): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (29): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+  )
+  (gate_convs): ModuleList(
+    (0): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (1): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (2): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (3): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (4): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (5): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (6): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (7): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (8): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (9): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (10): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (11): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (12): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (13): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (14): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (15): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (16): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (17): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (18): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (19): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (20): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (21): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (22): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (23): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (24): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (25): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (26): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (27): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (28): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+    (29): Conv1d(32, 32, kernel_size=(2,), stride=(1,))
+  )
+  (residual_convs): ModuleList(
+    (0): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (1): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (2): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (3): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (4): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (5): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (6): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (7): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (8): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (9): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (10): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (11): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (12): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (13): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (14): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (15): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (16): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (17): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (18): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (19): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (20): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (21): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (22): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (23): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (24): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (25): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (26): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (27): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (28): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+    (29): Conv1d(32, 32, kernel_size=(1,), stride=(1,))
+  )
+  (skip_convs): ModuleList(
+    (0): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (1): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (2): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (3): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (4): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (5): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (6): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (7): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (8): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (9): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (10): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (11): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (12): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (13): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (14): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (15): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (16): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (17): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (18): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (19): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (20): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (21): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (22): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (23): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (24): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (25): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (26): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (27): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (28): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+    (29): Conv1d(32, 1024, kernel_size=(1,), stride=(1,))
+  )
+  (start_conv): Conv1d(256, 32, kernel_size=(1,), stride=(1,))
+  (end_conv_1): Conv1d(1024, 512, kernel_size=(1,), stride=(1,))
+  (end_conv_2): Conv1d(512, 256, kernel_size=(1,), stride=(1,))
+)
+receptive field:  3070
+parameter count:  1834592
+one hot input
+the dataset has 598277 items
+start training...
+epoch 0
+one training step does take approximately 0.22133178234100342 seconds)
+loss at step 200: tensor(2.7750, device='cuda:0')
+loss at step 400: tensor(2.7919, device='cuda:0')
+validation loss: tensor(2.8982, device='cuda:0')
+validation accuracy: tensor(13.6008, device='cuda:0')%
+loss at step 600: tensor(2.7917, device='cuda:0')
+loss at step 800: tensor(2.7738, device='cuda:0')
+validation loss: tensor(2.8785, device='cuda:0')
+validation accuracy: tensor(13.4912, device='cuda:0')%
+loss at step 1000: tensor(2.7737, device='cuda:0')
+loss at step 1200: tensor(2.7567, device='cuda:0')
+validation loss: tensor(2.9070, device='cuda:0')
+validation accuracy: tensor(13.2669, device='cuda:0')%
+loss at step 1400: tensor(2.7767, device='cuda:0')
+loss at step 1600: tensor(2.7676, device='cuda:0')
+validation loss: tensor(2.8906, device='cuda:0')
+validation accuracy: tensor(13.4651, device='cuda:0')%
+loss at step 1800: tensor(2.7618, device='cuda:0')
+loss at step 2000: tensor(2.7712, device='cuda:0')
+validation loss: tensor(2.8580, device='cuda:0')
+validation accuracy: tensor(14.3990, device='cuda:0')%
+loss at step 2200: tensor(2.7652, device='cuda:0')
+loss at step 2400: tensor(2.7540, device='cuda:0')
+validation loss: tensor(2.8718, device='cuda:0')
+validation accuracy: tensor(13.8356, device='cuda:0')%
+loss at step 2600: tensor(2.7886, device='cuda:0')
+loss at step 2800: tensor(2.7435, device='cuda:0')
+validation loss: tensor(2.8720, device='cuda:0')
+validation accuracy: tensor(13.9451, device='cuda:0')%
+loss at step 3000: tensor(2.7520, device='cuda:0')
+loss at step 3200: tensor(2.7628, device='cuda:0')
+validation loss: tensor(2.8531, device='cuda:0')
+validation accuracy: tensor(14.1642, device='cuda:0')%
+loss at step 3400: tensor(2.7431, device='cuda:0')
+loss at step 3600: tensor(2.7458, device='cuda:0')
+validation loss: tensor(2.8737, device='cuda:0')
+validation accuracy: tensor(13.6008, device='cuda:0')%
+loss at step 3800: tensor(2.7670, device='cuda:0')
+loss at step 4000: tensor(2.7508, device='cuda:0')
+validation loss: tensor(2.8735, device='cuda:0')
+validation accuracy: tensor(14.2008, device='cuda:0')%
+loss at step 4200: tensor(2.7568, device='cuda:0')
+loss at step 4400: tensor(2.7559, device='cuda:0')
+validation loss: tensor(2.8688, device='cuda:0')
+validation accuracy: tensor(14.0547, device='cuda:0')%
+loss at step 4600: tensor(2.7587, device='cuda:0')
+loss at step 4800: tensor(2.7478, device='cuda:0')
+validation loss: tensor(2.8601, device='cuda:0')
+validation accuracy: tensor(14.3364, device='cuda:0')%
+loss at step 5000: tensor(2.7509, device='cuda:0')
+loss at step 5200: tensor(2.7340, device='cuda:0')
+validation loss: tensor(2.8403, device='cuda:0')
+validation accuracy: tensor(14.2529, device='cuda:0')%
+loss at step 5400: tensor(2.7561, device='cuda:0')
+loss at step 5600: tensor(2.7529, device='cuda:0')
+validation loss: tensor(2.8506, device='cuda:0')
+validation accuracy: tensor(14.5086, device='cuda:0')%
+loss at step 5800: tensor(2.7383, device='cuda:0')
+loss at step 6000: tensor(2.7350, device='cuda:0')
+validation loss: tensor(2.8821, device='cuda:0')
+validation accuracy: tensor(13.9712, device='cuda:0')%
+loss at step 6200: tensor(2.7466, device='cuda:0')
+loss at step 6400: tensor(2.7335, device='cuda:0')
+validation loss: tensor(2.8656, device='cuda:0')
+validation accuracy: tensor(14.1694, device='cuda:0')%
+loss at step 6600: tensor(2.7464, device='cuda:0')
+loss at step 6800: tensor(2.7453, device='cuda:0')
+validation loss: tensor(2.8319, device='cuda:0')
+validation accuracy: tensor(14.8737, device='cuda:0')%
+loss at step 7000: tensor(2.7534, device='cuda:0')
+loss at step 7200: tensor(2.7385, device='cuda:0')
+validation loss: tensor(2.8533, device='cuda:0')
+validation accuracy: tensor(14.1486, device='cuda:0')%
+loss at step 7400: tensor(2.7435, device='cuda:0')
+loss at step 7600: tensor(2.7281, device='cuda:0')
+validation loss: tensor(2.8331, device='cuda:0')
+validation accuracy: tensor(14.1277, device='cuda:0')%
+loss at step 7800: tensor(2.7256, device='cuda:0')
+loss at step 8000: tensor(2.7469, device='cuda:0')
+validation loss: tensor(2.8202, device='cuda:0')
+validation accuracy: tensor(14.4616, device='cuda:0')%
+loss at step 8200: tensor(2.7219, device='cuda:0')
+loss at step 8400: tensor(2.7522, device='cuda:0')
+validation loss: tensor(2.8440, device='cuda:0')
+validation accuracy: tensor(14.4720, device='cuda:0')%
+loss at step 8600: tensor(2.7135, device='cuda:0')
+loss at step 8800: tensor(2.7294, device='cuda:0')
+validation loss: tensor(2.8552, device='cuda:0')
+validation accuracy: tensor(14.3260, device='cuda:0')%
+loss at step 9000: tensor(2.7283, device='cuda:0')
+loss at step 9200: tensor(2.7106, device='cuda:0')
+validation loss: tensor(2.8323, device='cuda:0')
+validation accuracy: tensor(14.7538, device='cuda:0')%
+loss at step 9400: tensor(2.7166, device='cuda:0')
+loss at step 9600: tensor(2.7286, device='cuda:0')
+validation loss: tensor(2.8167, device='cuda:0')
+validation accuracy: tensor(14.8007, device='cuda:0')%
+loss at step 9800: tensor(2.7191, device='cuda:0')
+loss at step 10000: tensor(2.7086, device='cuda:0')
+validation loss: tensor(2.8139, device='cuda:0')
+validation accuracy: tensor(14.8842, device='cuda:0')%
+loss at step 10200: tensor(2.7166, device='cuda:0')
+loss at step 10400: tensor(2.7302, device='cuda:0')
+validation loss: tensor(2.8237, device='cuda:0')
+validation accuracy: tensor(14.6598, device='cuda:0')%
+loss at step 10600: tensor(2.7300, device='cuda:0')
+loss at step 10800: tensor(2.7312, device='cuda:0')
+validation loss: tensor(2.8160, device='cuda:0')
+validation accuracy: tensor(14.5242, device='cuda:0')%
+loss at step 11000: tensor(2.7251, device='cuda:0')
+loss at step 11200: tensor(2.7111, device='cuda:0')
+validation loss: tensor(2.8069, device='cuda:0')
+validation accuracy: tensor(15.2598, device='cuda:0')%
+loss at step 11400: tensor(2.7173, device='cuda:0')
+loss at step 11600: tensor(2.7286, device='cuda:0')
+validation loss: tensor(2.8223, device='cuda:0')
+validation accuracy: tensor(14.9572, device='cuda:0')%
+loss at step 11800: tensor(2.7152, device='cuda:0')
+loss at step 12000: tensor(2.6999, device='cuda:0')
+validation loss: tensor(2.8336, device='cuda:0')
+validation accuracy: tensor(14.5033, device='cuda:0')%
+loss at step 12200: tensor(2.7108, device='cuda:0')
+loss at step 12400: tensor(2.7252, device='cuda:0')
+validation loss: tensor(2.8480, device='cuda:0')
+validation accuracy: tensor(14.4564, device='cuda:0')%
+loss at step 12600: tensor(2.7053, device='cuda:0')
+loss at step 12800: tensor(2.7039, device='cuda:0')
+validation loss: tensor(2.8288, device='cuda:0')
+validation accuracy: tensor(14.1955, device='cuda:0')%
+loss at step 13000: tensor(2.7157, device='cuda:0')
+loss at step 13200: tensor(2.7210, device='cuda:0')
+validation loss: tensor(2.8326, device='cuda:0')
+validation accuracy: tensor(14.3729, device='cuda:0')%
+loss at step 13400: tensor(2.7144, device='cuda:0')
+loss at step 13600: tensor(2.7057, device='cuda:0')
+validation loss: tensor(2.7923, device='cuda:0')
+validation accuracy: tensor(14.6546, device='cuda:0')%
+loss at step 13800: tensor(2.7077, device='cuda:0')
+loss at step 14000: tensor(2.7175, device='cuda:0')
+validation loss: tensor(2.8092, device='cuda:0')
+validation accuracy: tensor(14.9885, device='cuda:0')%
+loss at step 14200: tensor(2.7310, device='cuda:0')
+loss at step 14400: tensor(2.6891, device='cuda:0')
+validation loss: tensor(2.8192, device='cuda:0')
+validation accuracy: tensor(14.9729, device='cuda:0')%
+loss at step 14600: tensor(2.7109, device='cuda:0')
+loss at step 14800: tensor(2.7120, device='cuda:0')
+validation loss: tensor(2.7835, device='cuda:0')
+validation accuracy: tensor(15.3015, device='cuda:0')%
+loss at step 15000: tensor(2.6969, device='cuda:0')
+loss at step 15200: tensor(2.6918, device='cuda:0')
+validation loss: tensor(2.8116, device='cuda:0')
+validation accuracy: tensor(14.4564, device='cuda:0')%
+loss at step 15400: tensor(2.7118, device='cuda:0')
+loss at step 15600: tensor(2.6899, device='cuda:0')
+validation loss: tensor(2.7850, device='cuda:0')
+validation accuracy: tensor(14.7746, device='cuda:0')%
+loss at step 15800: tensor(2.6893, device='cuda:0')
+loss at step 16000: tensor(2.7059, device='cuda:0')
+validation loss: tensor(2.7850, device='cuda:0')
+validation accuracy: tensor(14.9207, device='cuda:0')%
+loss at step 16200: tensor(2.6969, device='cuda:0')
+loss at step 16400: tensor(2.6857, device='cuda:0')
+validation loss: tensor(2.7784, device='cuda:0')
+validation accuracy: tensor(15.1920, device='cuda:0')%
+loss at step 16600: tensor(2.7069, device='cuda:0')
+loss at step 16800: tensor(2.6946, device='cuda:0')
+validation loss: tensor(2.8178, device='cuda:0')
+validation accuracy: tensor(15.0146, device='cuda:0')%
+loss at step 17000: tensor(2.6961, device='cuda:0')
+loss at step 17200: tensor(2.6955, device='cuda:0')
+validation loss: tensor(2.7923, device='cuda:0')
+validation accuracy: tensor(14.7955, device='cuda:0')%
+loss at step 17400: tensor(2.7098, device='cuda:0')
+loss at step 17600: tensor(2.6742, device='cuda:0')
+validation loss: tensor(2.7815, device='cuda:0')
+validation accuracy: tensor(15.2911, device='cuda:0')%
+loss at step 17800: tensor(2.6730, device='cuda:0')
+loss at step 18000: tensor(2.7004, device='cuda:0')
+validation loss: tensor(2.7821, device='cuda:0')
+validation accuracy: tensor(15.1294, device='cuda:0')%
+loss at step 18200: tensor(2.6814, device='cuda:0')
+loss at step 18400: tensor(2.6868, device='cuda:0')
+validation loss: tensor(2.7889, device='cuda:0')
+validation accuracy: tensor(14.8581, device='cuda:0')%
+loss at step 18600: tensor(2.7041, device='cuda:0')
+loss at step 18800: tensor(2.6919, device='cuda:0')
+validation loss: tensor(2.8285, device='cuda:0')
+validation accuracy: tensor(14.4460, device='cuda:0')%
+loss at step 19000: tensor(2.7123, device='cuda:0')
+loss at step 19200: tensor(2.6790, device='cuda:0')
+validation loss: tensor(2.7753, device='cuda:0')
+validation accuracy: tensor(15.3798, device='cuda:0')%
+loss at step 19400: tensor(2.6986, device='cuda:0')
+loss at step 19600: tensor(2.6918, device='cuda:0')
+validation loss: tensor(2.7682, device='cuda:0')
+validation accuracy: tensor(14.9572, device='cuda:0')%
+loss at step 19800: tensor(2.6940, device='cuda:0')
+loss at step 20000: tensor(2.6702, device='cuda:0')
+validation loss: tensor(2.7886, device='cuda:0')
+validation accuracy: tensor(14.9416, device='cuda:0')%
+loss at step 20200: tensor(2.6869, device='cuda:0')
+loss at step 20400: tensor(2.6858, device='cuda:0')
+validation loss: tensor(2.7819, device='cuda:0')
+validation accuracy: tensor(15.0250, device='cuda:0')%
+loss at step 20600: tensor(2.6955, device='cuda:0')
+loss at step 20800: tensor(2.6747, device='cuda:0')
+validation loss: tensor(2.7721, device='cuda:0')
+validation accuracy: tensor(15.2546, device='cuda:0')%
+loss at step 21000: tensor(2.6894, device='cuda:0')
+loss at step 21200: tensor(2.6840, device='cuda:0')
+validation loss: tensor(2.7643, device='cuda:0')
+validation accuracy: tensor(15.4268, device='cuda:0')%
+loss at step 21400: tensor(2.6937, device='cuda:0')
+loss at step 21600: tensor(2.7015, device='cuda:0')
+validation loss: tensor(2.7803, device='cuda:0')
+validation accuracy: tensor(14.7590, device='cuda:0')%
+loss at step 21800: tensor(2.6745, device='cuda:0')
+loss at step 22000: tensor(2.6800, device='cuda:0')
+validation loss: tensor(2.7833, device='cuda:0')
+validation accuracy: tensor(15.0616, device='cuda:0')%
+loss at step 22200: tensor(2.6924, device='cuda:0')
+loss at step 22400: tensor(2.6804, device='cuda:0')
+validation loss: tensor(2.7594, device='cuda:0')
+validation accuracy: tensor(15.3694, device='cuda:0')%
+loss at step 22600: tensor(2.6797, device='cuda:0')
+loss at step 22800: tensor(2.6695, device='cuda:0')
+validation loss: tensor(2.7583, device='cuda:0')
+validation accuracy: tensor(15.4633, device='cuda:0')%
+loss at step 23000: tensor(2.6847, device='cuda:0')
+loss at step 23200: tensor(2.6784, device='cuda:0')
+validation loss: tensor(2.7600, device='cuda:0')
+validation accuracy: tensor(15.4581, device='cuda:0')%
+loss at step 23400: tensor(2.6665, device='cuda:0')
+loss at step 23600: tensor(2.6653, device='cuda:0')
+validation loss: tensor(2.7665, device='cuda:0')
+validation accuracy: tensor(14.9103, device='cuda:0')%
+loss at step 23800: tensor(2.6694, device='cuda:0')
+loss at step 24000: tensor(2.6628, device='cuda:0')
+validation loss: tensor(2.7609, device='cuda:0')
+validation accuracy: tensor(15.3224, device='cuda:0')%
+loss at step 24200: tensor(2.6738, device='cuda:0')
+loss at step 24400: tensor(2.6812, device='cuda:0')
+validation loss: tensor(2.7766, device='cuda:0')
+validation accuracy: tensor(14.9990, device='cuda:0')%
+loss at step 24600: tensor(2.6842, device='cuda:0')
+loss at step 24800: tensor(2.6691, device='cuda:0')
+validation loss: tensor(2.7463, device='cuda:0')
+validation accuracy: tensor(15.6615, device='cuda:0')%
+loss at step 25000: tensor(2.6724, device='cuda:0')
+loss at step 25200: tensor(2.6650, device='cuda:0')
+validation loss: tensor(2.7586, device='cuda:0')
+validation accuracy: tensor(15.8076, device='cuda:0')%
+loss at step 25400: tensor(2.6726, device='cuda:0')
+loss at step 25600: tensor(2.6709, device='cuda:0')
+validation loss: tensor(2.8217, device='cuda:0')
+validation accuracy: tensor(12.7974, device='cuda:0')%
+loss at step 25800: tensor(2.6916, device='cuda:0')
+loss at step 26000: tensor(2.6582, device='cuda:0')
+validation loss: tensor(2.7413, device='cuda:0')
+validation accuracy: tensor(15.4685, device='cuda:0')%
+loss at step 26200: tensor(2.6844, device='cuda:0')
+loss at step 26400: tensor(2.6795, device='cuda:0')
+validation loss: tensor(2.7553, device='cuda:0')
+validation accuracy: tensor(15.0250, device='cuda:0')%
+loss at step 26600: tensor(2.6678, device='cuda:0')
+loss at step 26800: tensor(2.6579, device='cuda:0')
+validation loss: tensor(2.7468, device='cuda:0')
+validation accuracy: tensor(15.1607, device='cuda:0')%
+loss at step 27000: tensor(2.6770, device='cuda:0')
+loss at step 27200: tensor(2.6677, device='cuda:0')
+validation loss: tensor(2.7582, device='cuda:0')
+validation accuracy: tensor(15.3746, device='cuda:0')%
+loss at step 27400: tensor(2.6759, device='cuda:0')
+loss at step 27600: tensor(2.6881, device='cuda:0')
+validation loss: tensor(2.7618, device='cuda:0')
+validation accuracy: tensor(15.1659, device='cuda:0')%
+loss at step 27800: tensor(2.6914, device='cuda:0')
+loss at step 28000: tensor(2.6659, device='cuda:0')
+validation loss: tensor(2.7353, device='cuda:0')
+validation accuracy: tensor(15.9015, device='cuda:0')%
+loss at step 28200: tensor(2.6714, device='cuda:0')
+loss at step 28400: tensor(2.6574, device='cuda:0')
+validation loss: tensor(2.7460, device='cuda:0')
+validation accuracy: tensor(15.5676, device='cuda:0')%
+loss at step 28600: tensor(2.6685, device='cuda:0')
+loss at step 28800: tensor(2.6461, device='cuda:0')
+validation loss: tensor(2.7812, device='cuda:0')
+validation accuracy: tensor(14.8685, device='cuda:0')%
+loss at step 29000: tensor(2.6595, device='cuda:0')
+loss at step 29200: tensor(2.6682, device='cuda:0')
+validation loss: tensor(2.7425, device='cuda:0')
+validation accuracy: tensor(15.1450, device='cuda:0')%
+loss at step 29400: tensor(2.6701, device='cuda:0')
+loss at step 29600: tensor(2.6446, device='cuda:0')
+validation loss: tensor(2.7531, device='cuda:0')
+validation accuracy: tensor(14.8372, device='cuda:0')%
+loss at step 29800: tensor(2.6639, device='cuda:0')
+loss at step 30000: tensor(2.6628, device='cuda:0')
+validation loss: tensor(2.7590, device='cuda:0')
+validation accuracy: tensor(15.2494, device='cuda:0')%
+loss at step 30200: tensor(2.6597, device='cuda:0')
+loss at step 30400: tensor(2.6714, device='cuda:0')
+validation loss: tensor(2.7825, device='cuda:0')
+validation accuracy: tensor(14.4877, device='cuda:0')%
+loss at step 30600: tensor(2.6626, device='cuda:0')
+loss at step 30800: tensor(2.6685, device='cuda:0')
+validation loss: tensor(2.7382, device='cuda:0')
+validation accuracy: tensor(15.3485, device='cuda:0')%
+loss at step 31000: tensor(2.6778, device='cuda:0')
+loss at step 31200: tensor(2.6704, device='cuda:0')
+validation loss: tensor(2.7437, device='cuda:0')
+validation accuracy: tensor(15.4111, device='cuda:0')%
+loss at step 31400: tensor(2.6683, device='cuda:0')
+loss at step 31600: tensor(2.6567, device='cuda:0')
+validation loss: tensor(2.7532, device='cuda:0')
+validation accuracy: tensor(15.4685, device='cuda:0')%
+loss at step 31800: tensor(2.6691, device='cuda:0')
+loss at step 32000: tensor(2.6757, device='cuda:0')
+validation loss: tensor(2.7678, device='cuda:0')
+validation accuracy: tensor(14.7955, device='cuda:0')%
+loss at step 32200: tensor(2.6519, device='cuda:0')
+loss at step 32400: tensor(2.6496, device='cuda:0')
+validation loss: tensor(2.7431, device='cuda:0')
+validation accuracy: tensor(15.4215, device='cuda:0')%
+loss at step 32600: tensor(2.6645, device='cuda:0')
+loss at step 32800: tensor(2.6726, device='cuda:0')
+validation loss: tensor(2.7323, device='cuda:0')
+validation accuracy: tensor(15.4111, device='cuda:0')%
+loss at step 33000: tensor(2.6610, device='cuda:0')
+loss at step 33200: tensor(2.6430, device='cuda:0')
+validation loss: tensor(2.7577, device='cuda:0')
+validation accuracy: tensor(15.7085, device='cuda:0')%
+loss at step 33400: tensor(2.6714, device='cuda:0')
+loss at step 33600: tensor(2.6535, device='cuda:0')
+validation loss: tensor(2.7306, device='cuda:0')
+validation accuracy: tensor(15.6511, device='cuda:0')%
+loss at step 33800: tensor(2.6602, device='cuda:0')
+loss at step 34000: tensor(2.6509, device='cuda:0')
+validation loss: tensor(2.7409, device='cuda:0')
+validation accuracy: tensor(15.5780, device='cuda:0')%
+loss at step 34200: tensor(2.6451, device='cuda:0')
+loss at step 34400: tensor(2.6433, device='cuda:0')
+validation loss: tensor(2.7370, device='cuda:0')
+validation accuracy: tensor(14.8320, device='cuda:0')%
+loss at step 34600: tensor(2.6421, device='cuda:0')
+loss at step 34800: tensor(2.6546, device='cuda:0')
+validation loss: tensor(2.7276, device='cuda:0')
+validation accuracy: tensor(15.9432, device='cuda:0')%
+loss at step 35000: tensor(2.6454, device='cuda:0')
+loss at step 35200: tensor(2.6585, device='cuda:0')
+validation loss: tensor(2.7270, device='cuda:0')
+validation accuracy: tensor(15.8441, device='cuda:0')%
+loss at step 35400: tensor(2.6600, device='cuda:0')
+loss at step 35600: tensor(2.6479, device='cuda:0')
+validation loss: tensor(2.7383, device='cuda:0')
+validation accuracy: tensor(15.9380, device='cuda:0')%
+loss at step 35800: tensor(2.6462, device='cuda:0')
+loss at step 36000: tensor(2.6507, device='cuda:0')
+validation loss: tensor(2.7408, device='cuda:0')
+validation accuracy: tensor(15.6980, device='cuda:0')%
+loss at step 36200: tensor(2.6345, device='cuda:0')
+loss at step 36400: tensor(2.6375, device='cuda:0')
+validation loss: tensor(2.7261, device='cuda:0')
+validation accuracy: tensor(15.6667, device='cuda:0')%
+loss at step 36600: tensor(2.6629, device='cuda:0')
+loss at step 36800: tensor(2.6560, device='cuda:0')
+validation loss: tensor(2.7553, device='cuda:0')
+validation accuracy: tensor(15.9172, device='cuda:0')%
+loss at step 37000: tensor(2.6503, device='cuda:0')
+loss at step 37200: tensor(2.6356, device='cuda:0')
+validation loss: tensor(2.7386, device='cuda:0')
+validation accuracy: tensor(16.0528, device='cuda:0')%
+epoch 1
+loss at step 37400: tensor(2.6552, device='cuda:0')
+loss at step 37600: tensor(2.6397, device='cuda:0')
+validation loss: tensor(2.7355, device='cuda:0')
+validation accuracy: tensor(15.5154, device='cuda:0')%
+loss at step 37800: tensor(2.6391, device='cuda:0')
+loss at step 38000: tensor(2.6288, device='cuda:0')
+validation loss: tensor(2.7285, device='cuda:0')
+validation accuracy: tensor(15.7502, device='cuda:0')%
+loss at step 38200: tensor(2.6266, device='cuda:0')
+loss at step 38400: tensor(2.6492, device='cuda:0')
+validation loss: tensor(2.7344, device='cuda:0')
+validation accuracy: tensor(15.8859, device='cuda:0')%
+loss at step 38600: tensor(2.6444, device='cuda:0')
+loss at step 38800: tensor(2.6268, device='cuda:0')
+validation loss: tensor(2.7368, device='cuda:0')
+validation accuracy: tensor(15.8963, device='cuda:0')%
+loss at step 39000: tensor(2.6328, device='cuda:0')
+loss at step 39200: tensor(2.6306, device='cuda:0')
+validation loss: tensor(2.7448, device='cuda:0')
+validation accuracy: tensor(15.7502, device='cuda:0')%
+loss at step 39400: tensor(2.6450, device='cuda:0')
+loss at step 39600: tensor(2.6332, device='cuda:0')
+validation loss: tensor(2.7393, device='cuda:0')
+validation accuracy: tensor(15.4946, device='cuda:0')%
+loss at step 39800: tensor(2.6300, device='cuda:0')
+loss at step 40000: tensor(2.6410, device='cuda:0')
+validation loss: tensor(2.7330, device='cuda:0')
+validation accuracy: tensor(15.1868, device='cuda:0')%
+loss at step 40200: tensor(2.6281, device='cuda:0')
+loss at step 40400: tensor(2.6350, device='cuda:0')
+validation loss: tensor(2.7375, device='cuda:0')
+validation accuracy: tensor(15.2702, device='cuda:0')%
+loss at step 40600: tensor(2.6417, device='cuda:0')
+loss at step 40800: tensor(2.6421, device='cuda:0')
+validation loss: tensor(2.7302, device='cuda:0')
+validation accuracy: tensor(15.7033, device='cuda:0')%
+loss at step 41000: tensor(2.6309, device='cuda:0')
+loss at step 41200: tensor(2.6338, device='cuda:0')
+validation loss: tensor(2.7252, device='cuda:0')
+validation accuracy: tensor(15.8389, device='cuda:0')%
+loss at step 41400: tensor(2.6367, device='cuda:0')
+loss at step 41600: tensor(2.6550, device='cuda:0')
+validation loss: tensor(2.7319, device='cuda:0')
+validation accuracy: tensor(15.6615, device='cuda:0')%
+loss at step 41800: tensor(2.6257, device='cuda:0')
+loss at step 42000: tensor(2.6377, device='cuda:0')
+validation loss: tensor(2.7167, device='cuda:0')
+validation accuracy: tensor(15.7033, device='cuda:0')%
+loss at step 42200: tensor(2.6264, device='cuda:0')
+loss at step 42400: tensor(2.6359, device='cuda:0')
+validation loss: tensor(2.7440, device='cuda:0')
+validation accuracy: tensor(15.4633, device='cuda:0')%
+loss at step 42600: tensor(2.6234, device='cuda:0')
+loss at step 42800: tensor(2.6524, device='cuda:0')
+validation loss: tensor(2.7411, device='cuda:0')
+validation accuracy: tensor(15.2650, device='cuda:0')%
+loss at step 43000: tensor(2.6310, device='cuda:0')
+loss at step 43200: tensor(2.6294, device='cuda:0')
+validation loss: tensor(2.7151, device='cuda:0')
+validation accuracy: tensor(15.6928, device='cuda:0')%
+loss at step 43400: tensor(2.6290, device='cuda:0')
+loss at step 43600: tensor(2.6421, device='cuda:0')
+validation loss: tensor(2.7370, device='cuda:0')
+validation accuracy: tensor(15.7919, device='cuda:0')%
+loss at step 43800: tensor(2.6412, device='cuda:0')
+loss at step 44000: tensor(2.6293, device='cuda:0')
+validation loss: tensor(2.7260, device='cuda:0')
+validation accuracy: tensor(15.8337, device='cuda:0')%
+loss at step 44200: tensor(2.6464, device='cuda:0')
+loss at step 44400: tensor(2.6196, device='cuda:0')
+validation loss: tensor(2.7343, device='cuda:0')
+validation accuracy: tensor(15.4841, device='cuda:0')%
+loss at step 44600: tensor(2.6299, device='cuda:0')
+loss at step 44800: tensor(2.6266, device='cuda:0')
+validation loss: tensor(2.7291, device='cuda:0')
+validation accuracy: tensor(15.5154, device='cuda:0')%
+loss at step 45000: tensor(2.6275, device='cuda:0')
+loss at step 45200: tensor(2.6309, device='cuda:0')
+validation loss: tensor(2.7193, device='cuda:0')
+validation accuracy: tensor(15.9224, device='cuda:0')%
+loss at step 45400: tensor(2.6373, device='cuda:0')
+loss at step 45600: tensor(2.6491, device='cuda:0')
+validation loss: tensor(2.7172, device='cuda:0')
+validation accuracy: tensor(15.8702, device='cuda:0')%
+loss at step 45800: tensor(2.6356, device='cuda:0')
+loss at step 46000: tensor(2.6274, device='cuda:0')
+validation loss: tensor(2.7058, device='cuda:0')
+validation accuracy: tensor(15.9693, device='cuda:0')%
+loss at step 46200: tensor(2.6273, device='cuda:0')
+loss at step 46400: tensor(2.6405, device='cuda:0')
+validation loss: tensor(2.7100, device='cuda:0')
+validation accuracy: tensor(16.0371, device='cuda:0')%
+loss at step 46600: tensor(2.6278, device='cuda:0')
+loss at step 46800: tensor(2.6293, device='cuda:0')
+validation loss: tensor(2.7075, device='cuda:0')
+validation accuracy: tensor(15.8545, device='cuda:0')%
+loss at step 47000: tensor(2.6162, device='cuda:0')
+loss at step 47200: tensor(2.6333, device='cuda:0')
+validation loss: tensor(2.7076, device='cuda:0')
+validation accuracy: tensor(15.6980, device='cuda:0')%
+loss at step 47400: tensor(2.6328, device='cuda:0')
+loss at step 47600: tensor(2.6252, device='cuda:0')
+validation loss: tensor(2.7122, device='cuda:0')
+validation accuracy: tensor(15.6928, device='cuda:0')%
+loss at step 47800: tensor(2.6323, device='cuda:0')
+loss at step 48000: tensor(2.6327, device='cuda:0')
+validation loss: tensor(2.6922, device='cuda:0')
+validation accuracy: tensor(16.7675, device='cuda:0')%
+loss at step 48200: tensor(2.6334, device='cuda:0')
+loss at step 48400: tensor(2.6326, device='cuda:0')
+validation loss: tensor(2.7302, device='cuda:0')
+validation accuracy: tensor(15.1555, device='cuda:0')%
+loss at step 48600: tensor(2.6209, device='cuda:0')
+loss at step 48800: tensor(2.6311, device='cuda:0')
+validation loss: tensor(2.7114, device='cuda:0')
+validation accuracy: tensor(15.8024, device='cuda:0')%
+loss at step 49000: tensor(2.6068, device='cuda:0')
+loss at step 49200: tensor(2.6179, device='cuda:0')
+validation loss: tensor(2.7128, device='cuda:0')
+validation accuracy: tensor(15.5885, device='cuda:0')%
+loss at step 49400: tensor(2.6315, device='cuda:0')
+loss at step 49600: tensor(2.6194, device='cuda:0')
+validation loss: tensor(2.7054, device='cuda:0')
+validation accuracy: tensor(15.7919, device='cuda:0')%
+loss at step 49800: tensor(2.6158, device='cuda:0')
+loss at step 50000: tensor(2.6195, device='cuda:0')
+validation loss: tensor(2.6845, device='cuda:0')
+validation accuracy: tensor(15.8441, device='cuda:0')%
+loss at step 50200: tensor(2.6199, device='cuda:0')
+loss at step 50400: tensor(2.6191, device='cuda:0')
+validation loss: tensor(2.7108, device='cuda:0')
+validation accuracy: tensor(15.8754, device='cuda:0')%
+loss at step 50600: tensor(2.6163, device='cuda:0')
+loss at step 50800: tensor(2.6154, device='cuda:0')
+validation loss: tensor(2.7221, device='cuda:0')
+validation accuracy: tensor(15.7972, device='cuda:0')%
+loss at step 51000: tensor(2.6246, device='cuda:0')
+loss at step 51200: tensor(2.6263, device='cuda:0')
+validation loss: tensor(2.6953, device='cuda:0')
+validation accuracy: tensor(16.2615, device='cuda:0')%
+loss at step 51400: tensor(2.6244, device='cuda:0')
+loss at step 51600: tensor(2.6352, device='cuda:0')
+validation loss: tensor(2.6993, device='cuda:0')
+validation accuracy: tensor(15.9380, device='cuda:0')%
+loss at step 51800: tensor(2.6129, device='cuda:0')
+loss at step 52000: tensor(2.6138, device='cuda:0')
+validation loss: tensor(2.6881, device='cuda:0')
+validation accuracy: tensor(16.0476, device='cuda:0')%
+loss at step 52200: tensor(2.6120, device='cuda:0')
+loss at step 52400: tensor(2.6176, device='cuda:0')
+validation loss: tensor(2.6810, device='cuda:0')
+validation accuracy: tensor(16.5536, device='cuda:0')%
+loss at step 52600: tensor(2.6349, device='cuda:0')
+loss at step 52800: tensor(2.6103, device='cuda:0')
+validation loss: tensor(2.7149, device='cuda:0')
+validation accuracy: tensor(15.8493, device='cuda:0')%
+loss at step 53000: tensor(2.6200, device='cuda:0')
+loss at step 53200: tensor(2.6369, device='cuda:0')
+validation loss: tensor(2.6897, device='cuda:0')
+validation accuracy: tensor(16.5432, device='cuda:0')%
+loss at step 53400: tensor(2.6290, device='cuda:0')
+loss at step 53600: tensor(2.6138, device='cuda:0')
+validation loss: tensor(2.6801, device='cuda:0')
+validation accuracy: tensor(16.7414, device='cuda:0')%
+loss at step 53800: tensor(2.6056, device='cuda:0')
+loss at step 54000: tensor(2.6274, device='cuda:0')
+validation loss: tensor(2.7008, device='cuda:0')
+validation accuracy: tensor(16.5119, device='cuda:0')%
+loss at step 54200: tensor(2.6244, device='cuda:0')
+loss at step 54400: tensor(2.6128, device='cuda:0')
+validation loss: tensor(2.6861, device='cuda:0')
+validation accuracy: tensor(16.6788, device='cuda:0')%
+loss at step 54600: tensor(2.6291, device='cuda:0')
+loss at step 54800: tensor(2.6246, device='cuda:0')
+validation loss: tensor(2.6915, device='cuda:0')
+validation accuracy: tensor(15.7867, device='cuda:0')%
+loss at step 55000: tensor(2.5994, device='cuda:0')
+loss at step 55200: tensor(2.6337, device='cuda:0')
+validation loss: tensor(2.6868, device='cuda:0')
+validation accuracy: tensor(16.0789, device='cuda:0')%
+loss at step 55400: tensor(2.6113, device='cuda:0')
+loss at step 55600: tensor(2.6220, device='cuda:0')
+validation loss: tensor(2.6877, device='cuda:0')
+validation accuracy: tensor(16.5901, device='cuda:0')%
+loss at step 55800: tensor(2.6363, device='cuda:0')
+loss at step 56000: tensor(2.6285, device='cuda:0')
+validation loss: tensor(2.6870, device='cuda:0')
+validation accuracy: tensor(16.0997, device='cuda:0')%
+loss at step 56200: tensor(2.6028, device='cuda:0')
+loss at step 56400: tensor(2.6059, device='cuda:0')
+validation loss: tensor(2.6782, device='cuda:0')
+validation accuracy: tensor(16.6423, device='cuda:0')%
+loss at step 56600: tensor(2.5958, device='cuda:0')
+loss at step 56800: tensor(2.6280, device='cuda:0')
+validation loss: tensor(2.6982, device='cuda:0')
+validation accuracy: tensor(16.0893, device='cuda:0')%
+loss at step 57000: tensor(2.6052, device='cuda:0')
+loss at step 57200: tensor(2.6248, device='cuda:0')
+validation loss: tensor(2.6881, device='cuda:0')
+validation accuracy: tensor(16.4806, device='cuda:0')%
+loss at step 57400: tensor(2.6238, device='cuda:0')
+loss at step 57600: tensor(2.6111, device='cuda:0')
+validation loss: tensor(2.6784, device='cuda:0')
+validation accuracy: tensor(16.5328, device='cuda:0')%
+loss at step 57800: tensor(2.6169, device='cuda:0')
+loss at step 58000: tensor(2.6228, device='cuda:0')
+validation loss: tensor(2.7056, device='cuda:0')
+validation accuracy: tensor(15.7502, device='cuda:0')%
+loss at step 58200: tensor(2.6118, device='cuda:0')
+loss at step 58400: tensor(2.6277, device='cuda:0')
+validation loss: tensor(2.6924, device='cuda:0')
+validation accuracy: tensor(16.1363, device='cuda:0')%
+loss at step 58600: tensor(2.5902, device='cuda:0')
+loss at step 58800: tensor(2.6349, device='cuda:0')
+validation loss: tensor(2.7238, device='cuda:0')
+validation accuracy: tensor(15.5520, device='cuda:0')%
+loss at step 59000: tensor(2.6118, device='cuda:0')
+loss at step 59200: tensor(2.6093, device='cuda:0')
+validation loss: tensor(2.7125, device='cuda:0')
+validation accuracy: tensor(15.7502, device='cuda:0')%
+loss at step 59400: tensor(2.6003, device='cuda:0')
+loss at step 59600: tensor(2.6080, device='cuda:0')
+validation loss: tensor(2.7008, device='cuda:0')
+validation accuracy: tensor(15.9745, device='cuda:0')%
+loss at step 59800: tensor(2.6036, device='cuda:0')
+loss at step 60000: tensor(2.6197, device='cuda:0')
+validation loss: tensor(2.6811, device='cuda:0')
+validation accuracy: tensor(16.0267, device='cuda:0')%
+loss at step 60200: tensor(2.6173, device='cuda:0')
+loss at step 60400: tensor(2.6316, device='cuda:0')
+validation loss: tensor(2.7026, device='cuda:0')
+validation accuracy: tensor(15.9693, device='cuda:0')%
+loss at step 60600: tensor(2.5999, device='cuda:0')
+loss at step 60800: tensor(2.6052, device='cuda:0')
+validation loss: tensor(2.6729, device='cuda:0')
+validation accuracy: tensor(16.3345, device='cuda:0')%
+loss at step 61000: tensor(2.5959, device='cuda:0')
+loss at step 61200: tensor(2.6132, device='cuda:0')
+validation loss: tensor(2.6891, device='cuda:0')
+validation accuracy: tensor(16.2771, device='cuda:0')%
+loss at step 61400: tensor(2.6132, device='cuda:0')
+loss at step 61600: tensor(2.6026, device='cuda:0')
+validation loss: tensor(2.6705, device='cuda:0')
+validation accuracy: tensor(16.9293, device='cuda:0')%
+loss at step 61800: tensor(2.5982, device='cuda:0')
+loss at step 62000: tensor(2.6089, device='cuda:0')
+validation loss: tensor(2.6679, device='cuda:0')
+validation accuracy: tensor(16.6632, device='cuda:0')%
+loss at step 62200: tensor(2.6070, device='cuda:0')
+loss at step 62400: tensor(2.6235, device='cuda:0')
+validation loss: tensor(2.7020, device='cuda:0')
+validation accuracy: tensor(16.1519, device='cuda:0')%
+loss at step 62600: tensor(2.6048, device='cuda:0')
+loss at step 62800: tensor(2.6148, device='cuda:0')
+validation loss: tensor(2.6833, device='cuda:0')
+validation accuracy: tensor(16.0006, device='cuda:0')%
+loss at step 63000: tensor(2.6061, device='cuda:0')
+loss at step 63200: tensor(2.6020, device='cuda:0')
+validation loss: tensor(2.6813, device='cuda:0')
+validation accuracy: tensor(16.2406, device='cuda:0')%
+loss at step 63400: tensor(2.6241, device='cuda:0')
+loss at step 63600: tensor(2.6060, device='cuda:0')
+validation loss: tensor(2.6827, device='cuda:0')
+validation accuracy: tensor(16.3554, device='cuda:0')%
+loss at step 63800: tensor(2.6090, device='cuda:0')
+loss at step 64000: tensor(2.6087, device='cuda:0')
+validation loss: tensor(2.6745, device='cuda:0')
+validation accuracy: tensor(16.3815, device='cuda:0')%
+loss at step 64200: tensor(2.6150, device='cuda:0')
+loss at step 64400: tensor(2.6122, device='cuda:0')
+validation loss: tensor(2.6746, device='cuda:0')
+validation accuracy: tensor(16.0684, device='cuda:0')%
+loss at step 64600: tensor(2.5949, device='cuda:0')
+loss at step 64800: tensor(2.5885, device='cuda:0')
+validation loss: tensor(2.6603, device='cuda:0')
+validation accuracy: tensor(16.3971, device='cuda:0')%
+loss at step 65000: tensor(2.5974, device='cuda:0')
+loss at step 65200: tensor(2.5994, device='cuda:0')
+validation loss: tensor(2.6770, device='cuda:0')
+validation accuracy: tensor(16.2667, device='cuda:0')%
+loss at step 65400: tensor(2.6061, device='cuda:0')
+loss at step 65600: tensor(2.6113, device='cuda:0')
+validation loss: tensor(2.6843, device='cuda:0')
+validation accuracy: tensor(15.7554, device='cuda:0')%
+loss at step 65800: tensor(2.6030, device='cuda:0')
+loss at step 66000: tensor(2.6067, device='cuda:0')
+validation loss: tensor(2.6788, device='cuda:0')
+validation accuracy: tensor(16.4754, device='cuda:0')%
+loss at step 66200: tensor(2.6145, device='cuda:0')
+loss at step 66400: tensor(2.6201, device='cuda:0')
+validation loss: tensor(2.6782, device='cuda:0')
+validation accuracy: tensor(16.3084, device='cuda:0')%
+loss at step 66600: tensor(2.6025, device='cuda:0')
+loss at step 66800: tensor(2.6091, device='cuda:0')
+validation loss: tensor(2.6743, device='cuda:0')
+validation accuracy: tensor(16.3084, device='cuda:0')%
+loss at step 67000: tensor(2.6098, device='cuda:0')
+loss at step 67200: tensor(2.6035, device='cuda:0')
+validation loss: tensor(2.6536, device='cuda:0')
+validation accuracy: tensor(16.1884, device='cuda:0')%
+loss at step 67400: tensor(2.6085, device='cuda:0')
+loss at step 67600: tensor(2.5956, device='cuda:0')
+validation loss: tensor(2.6965, device='cuda:0')
+validation accuracy: tensor(16.3449, device='cuda:0')%
+loss at step 67800: tensor(2.6121, device='cuda:0')
+loss at step 68000: tensor(2.6219, device='cuda:0')
+validation loss: tensor(2.6764, device='cuda:0')
+validation accuracy: tensor(16.8093, device='cuda:0')%
+loss at step 68200: tensor(2.6130, device='cuda:0')
+loss at step 68400: tensor(2.6101, device='cuda:0')
+validation loss: tensor(2.6900, device='cuda:0')
+validation accuracy: tensor(15.8076, device='cuda:0')%
+loss at step 68600: tensor(2.5952, device='cuda:0')
+loss at step 68800: tensor(2.5923, device='cuda:0')
+validation loss: tensor(2.6759, device='cuda:0')
+validation accuracy: tensor(16.4389, device='cuda:0')%
+loss at step 69000: tensor(2.5891, device='cuda:0')
+loss at step 69200: tensor(2.6000, device='cuda:0')
+validation loss: tensor(2.6970, device='cuda:0')
+validation accuracy: tensor(16.0163, device='cuda:0')%
+loss at step 69400: tensor(2.5962, device='cuda:0')
+loss at step 69600: tensor(2.6302, device='cuda:0')
+validation loss: tensor(2.6768, device='cuda:0')
+validation accuracy: tensor(16.2719, device='cuda:0')%
+loss at step 69800: tensor(2.6058, device='cuda:0')
+loss at step 70000: tensor(2.5993, device='cuda:0')
+validation loss: tensor(2.6557, device='cuda:0')
+validation accuracy: tensor(16.0476, device='cuda:0')%
+loss at step 70200: tensor(2.6104, device='cuda:0')
+loss at step 70400: tensor(2.6022, device='cuda:0')
+validation loss: tensor(2.6711, device='cuda:0')
+validation accuracy: tensor(16.3867, device='cuda:0')%
+loss at step 70600: tensor(2.6215, device='cuda:0')
+loss at step 70800: tensor(2.6017, device='cuda:0')
+validation loss: tensor(2.6745, device='cuda:0')
+validation accuracy: tensor(16.0684, device='cuda:0')%
+loss at step 71000: tensor(2.5825, device='cuda:0')
+loss at step 71200: tensor(2.6101, device='cuda:0')
+validation loss: tensor(2.6740, device='cuda:0')
+validation accuracy: tensor(16.2980, device='cuda:0')%
+loss at step 71400: tensor(2.5877, device='cuda:0')
+loss at step 71600: tensor(2.5903, device='cuda:0')
+validation loss: tensor(2.6868, device='cuda:0')
+validation accuracy: tensor(16.0111, device='cuda:0')%
+loss at step 71800: tensor(2.6119, device='cuda:0')
+loss at step 72000: tensor(2.6155, device='cuda:0')
+validation loss: tensor(2.6678, device='cuda:0')
+validation accuracy: tensor(16.2302, device='cuda:0')%
+loss at step 72200: tensor(2.6056, device='cuda:0')
+loss at step 72400: tensor(2.5880, device='cuda:0')
+validation loss: tensor(2.6724, device='cuda:0')
+validation accuracy: tensor(16.2928, device='cuda:0')%
+loss at step 72600: tensor(2.5886, device='cuda:0')
+loss at step 72800: tensor(2.6013, device='cuda:0')
+validation loss: tensor(2.6593, device='cuda:0')
+validation accuracy: tensor(16.6371, device='cuda:0')%
+loss at step 73000: tensor(2.5981, device='cuda:0')
+loss at step 73200: tensor(2.5904, device='cuda:0')
+validation loss: tensor(2.6463, device='cuda:0')
+validation accuracy: tensor(16.8823, device='cuda:0')%
+loss at step 73400: tensor(2.6210, device='cuda:0')
+loss at step 73600: tensor(2.5908, device='cuda:0')
+validation loss: tensor(2.6698, device='cuda:0')
+validation accuracy: tensor(16.7832, device='cuda:0')%
+loss at step 73800: tensor(2.5968, device='cuda:0')
+loss at step 74000: tensor(2.5846, device='cuda:0')
+validation loss: tensor(2.6696, device='cuda:0')
+validation accuracy: tensor(16.6215, device='cuda:0')%
+loss at step 74200: tensor(2.5999, device='cuda:0')
+loss at step 74400: tensor(2.5980, device='cuda:0')
+validation loss: tensor(2.6664, device='cuda:0')
+validation accuracy: tensor(16.8354, device='cuda:0')%
+loss at step 74600: tensor(2.6020, device='cuda:0')
+epoch 2
+loss at step 74800: tensor(2.5828, device='cuda:0')
+validation loss: tensor(2.6682, device='cuda:0')
+validation accuracy: tensor(16.5536, device='cuda:0')%
+loss at step 75000: tensor(2.5962, device='cuda:0')
+loss at step 75200: tensor(2.5988, device='cuda:0')
+validation loss: tensor(2.6529, device='cuda:0')
+validation accuracy: tensor(16.7571, device='cuda:0')%
+loss at step 75400: tensor(2.5902, device='cuda:0')
+loss at step 75600: tensor(2.5935, device='cuda:0')
+validation loss: tensor(2.6580, device='cuda:0')
+validation accuracy: tensor(16.1989, device='cuda:0')%
+loss at step 75800: tensor(2.5881, device='cuda:0')
+loss at step 76000: tensor(2.6008, device='cuda:0')
+validation loss: tensor(2.6577, device='cuda:0')
+validation accuracy: tensor(16.6945, device='cuda:0')%
+loss at step 76200: tensor(2.5614, device='cuda:0')
+loss at step 76400: tensor(2.5800, device='cuda:0')
+validation loss: tensor(2.6668, device='cuda:0')
+validation accuracy: tensor(16.3867, device='cuda:0')%
+loss at step 76600: tensor(2.5807, device='cuda:0')
+loss at step 76800: tensor(2.6028, device='cuda:0')
+validation loss: tensor(2.6778, device='cuda:0')
+validation accuracy: tensor(16.4076, device='cuda:0')%
+loss at step 77000: tensor(2.5720, device='cuda:0')
+loss at step 77200: tensor(2.5666, device='cuda:0')
+validation loss: tensor(2.6696, device='cuda:0')
+validation accuracy: tensor(16.1676, device='cuda:0')%
+loss at step 77400: tensor(2.6052, device='cuda:0')
+loss at step 77600: tensor(2.5933, device='cuda:0')
+validation loss: tensor(2.6776, device='cuda:0')
+validation accuracy: tensor(16.5380, device='cuda:0')%
+loss at step 77800: tensor(2.5904, device='cuda:0')
+loss at step 78000: tensor(2.5771, device='cuda:0')
+validation loss: tensor(2.6745, device='cuda:0')
+validation accuracy: tensor(16.4389, device='cuda:0')%
+loss at step 78200: tensor(2.5936, device='cuda:0')
+loss at step 78400: tensor(2.5819, device='cuda:0')
+validation loss: tensor(2.6569, device='cuda:0')
+validation accuracy: tensor(16.6945, device='cuda:0')%
+loss at step 78600: tensor(2.5898, device='cuda:0')
+loss at step 78800: tensor(2.5865, device='cuda:0')
+validation loss: tensor(2.6365, device='cuda:0')
+validation accuracy: tensor(17.0701, device='cuda:0')%
+loss at step 79000: tensor(2.5701, device='cuda:0')
+loss at step 79200: tensor(2.5718, device='cuda:0')
+validation loss: tensor(2.6489, device='cuda:0')
+validation accuracy: tensor(16.7780, device='cuda:0')%
+loss at step 79400: tensor(2.5701, device='cuda:0')
+loss at step 79600: tensor(2.5844, device='cuda:0')
+validation loss: tensor(2.6595, device='cuda:0')
+validation accuracy: tensor(16.6006, device='cuda:0')%
+loss at step 79800: tensor(2.6035, device='cuda:0')
+loss at step 80000: tensor(2.5588, device='cuda:0')
+validation loss: tensor(2.6682, device='cuda:0')
+validation accuracy: tensor(16.0215, device='cuda:0')%
+loss at step 80200: tensor(2.5803, device='cuda:0')
+loss at step 80400: tensor(2.5873, device='cuda:0')
+validation loss: tensor(2.6678, device='cuda:0')
+validation accuracy: tensor(16.6162, device='cuda:0')%
+loss at step 80600: tensor(2.5830, device='cuda:0')
+loss at step 80800: tensor(2.5971, device='cuda:0')
+validation loss: tensor(2.6540, device='cuda:0')
+validation accuracy: tensor(16.8301, device='cuda:0')%
+loss at step 81000: tensor(2.5906, device='cuda:0')
+loss at step 81200: tensor(2.5755, device='cuda:0')
+validation loss: tensor(2.6509, device='cuda:0')
+validation accuracy: tensor(16.5641, device='cuda:0')%
+loss at step 81400: tensor(2.5927, device='cuda:0')
+loss at step 81600: tensor(2.5850, device='cuda:0')
+validation loss: tensor(2.6616, device='cuda:0')
+validation accuracy: tensor(16.6162, device='cuda:0')%
+loss at step 81800: tensor(2.5693, device='cuda:0')
+loss at step 82000: tensor(2.5824, device='cuda:0')
+validation loss: tensor(2.6494, device='cuda:0')
+validation accuracy: tensor(16.7519, device='cuda:0')%
+loss at step 82200: tensor(2.6140, device='cuda:0')
+loss at step 82400: tensor(2.5987, device='cuda:0')
+validation loss: tensor(2.6480, device='cuda:0')
+validation accuracy: tensor(16.9397, device='cuda:0')%
+loss at step 82600: tensor(2.6050, device='cuda:0')
+loss at step 82800: tensor(2.5964, device='cuda:0')
+validation loss: tensor(2.6435, device='cuda:0')
+validation accuracy: tensor(16.6580, device='cuda:0')%
+loss at step 83000: tensor(2.5646, device='cuda:0')
+loss at step 83200: tensor(2.5907, device='cuda:0')
+validation loss: tensor(2.6551, device='cuda:0')
+validation accuracy: tensor(16.9814, device='cuda:0')%
+loss at step 83400: tensor(2.5821, device='cuda:0')
+loss at step 83600: tensor(2.6063, device='cuda:0')
+validation loss: tensor(2.6701, device='cuda:0')
+validation accuracy: tensor(16.7101, device='cuda:0')%
+loss at step 83800: tensor(2.5897, device='cuda:0')
+loss at step 84000: tensor(2.5762, device='cuda:0')
+validation loss: tensor(2.6521, device='cuda:0')
+validation accuracy: tensor(16.7571, device='cuda:0')%
+loss at step 84200: tensor(2.5603, device='cuda:0')
+loss at step 84400: tensor(2.5841, device='cuda:0')
+validation loss: tensor(2.6627, device='cuda:0')
+validation accuracy: tensor(16.4962, device='cuda:0')%
+loss at step 84600: tensor(2.6059, device='cuda:0')
+loss at step 84800: tensor(2.5834, device='cuda:0')
+validation loss: tensor(2.6516, device='cuda:0')
+validation accuracy: tensor(16.7467, device='cuda:0')%
+loss at step 85000: tensor(2.5763, device='cuda:0')
+loss at step 85200: tensor(2.5904, device='cuda:0')
+validation loss: tensor(2.6574, device='cuda:0')
+validation accuracy: tensor(16.1050, device='cuda:0')%
+loss at step 85400: tensor(2.5909, device='cuda:0')
+loss at step 85600: tensor(2.5936, device='cuda:0')
+validation loss: tensor(2.6530, device='cuda:0')
+validation accuracy: tensor(16.3554, device='cuda:0')%
+loss at step 85800: tensor(2.5855, device='cuda:0')
+loss at step 86000: tensor(2.5898, device='cuda:0')
+validation loss: tensor(2.6711, device='cuda:0')
+validation accuracy: tensor(16.7049, device='cuda:0')%
+loss at step 86200: tensor(2.5953, device='cuda:0')
+loss at step 86400: tensor(2.5812, device='cuda:0')
+validation loss: tensor(2.6519, device='cuda:0')
+validation accuracy: tensor(16.5432, device='cuda:0')%
+loss at step 86600: tensor(2.5810, device='cuda:0')
+loss at step 86800: tensor(2.6024, device='cuda:0')
+validation loss: tensor(2.6608, device='cuda:0')
+validation accuracy: tensor(16.0737, device='cuda:0')%
+loss at step 87000: tensor(2.5884, device='cuda:0')
+loss at step 87200: tensor(2.5855, device='cuda:0')
+validation loss: tensor(2.6648, device='cuda:0')
+validation accuracy: tensor(16.2093, device='cuda:0')%
+loss at step 87400: tensor(2.5898, device='cuda:0')
+loss at step 87600: tensor(2.5615, device='cuda:0')
+validation loss: tensor(2.6522, device='cuda:0')
+validation accuracy: tensor(16.4545, device='cuda:0')%
+loss at step 87800: tensor(2.5714, device='cuda:0')
+loss at step 88000: tensor(2.5667, device='cuda:0')
+validation loss: tensor(2.6694, device='cuda:0')
+validation accuracy: tensor(16.0632, device='cuda:0')%
+loss at step 88200: tensor(2.5872, device='cuda:0')
+loss at step 88400: tensor(2.5811, device='cuda:0')
+validation loss: tensor(2.6527, device='cuda:0')
+validation accuracy: tensor(16.4232, device='cuda:0')%
+loss at step 88600: tensor(2.5879, device='cuda:0')
+loss at step 88800: tensor(2.5800, device='cuda:0')
+validation loss: tensor(2.6408, device='cuda:0')
+validation accuracy: tensor(16.6319, device='cuda:0')%
+loss at step 89000: tensor(2.5907, device='cuda:0')
+loss at step 89200: tensor(2.5757, device='cuda:0')
+validation loss: tensor(2.6271, device='cuda:0')
+validation accuracy: tensor(16.9606, device='cuda:0')%
+loss at step 89400: tensor(2.5743, device='cuda:0')
+loss at step 89600: tensor(2.5923, device='cuda:0')
+validation loss: tensor(2.6544, device='cuda:0')
+validation accuracy: tensor(16.6893, device='cuda:0')%
+loss at step 89800: tensor(2.5931, device='cuda:0')
+loss at step 90000: tensor(2.5891, device='cuda:0')
+validation loss: tensor(2.6492, device='cuda:0')
+validation accuracy: tensor(16.4702, device='cuda:0')%
+loss at step 90200: tensor(2.5889, device='cuda:0')
+loss at step 90400: tensor(2.5562, device='cuda:0')
+validation loss: tensor(2.6495, device='cuda:0')
+validation accuracy: tensor(16.7258, device='cuda:0')%
+loss at step 90600: tensor(2.5678, device='cuda:0')
+loss at step 90800: tensor(2.5722, device='cuda:0')
+validation loss: tensor(2.6428, device='cuda:0')
+validation accuracy: tensor(16.3919, device='cuda:0')%
+loss at step 91000: tensor(2.5892, device='cuda:0')
+loss at step 91200: tensor(2.5755, device='cuda:0')
+validation loss: tensor(2.6332, device='cuda:0')
+validation accuracy: tensor(17.0232, device='cuda:0')%
+loss at step 91400: tensor(2.5748, device='cuda:0')
+loss at step 91600: tensor(2.5944, device='cuda:0')
+validation loss: tensor(2.6618, device='cuda:0')
+validation accuracy: tensor(16.6788, device='cuda:0')%
+loss at step 91800: tensor(2.5812, device='cuda:0')
+loss at step 92000: tensor(2.5859, device='cuda:0')
+validation loss: tensor(2.6644, device='cuda:0')
+validation accuracy: tensor(16.1050, device='cuda:0')%
+loss at step 92200: tensor(2.5913, device='cuda:0')
+loss at step 92400: tensor(2.5781, device='cuda:0')
+validation loss: tensor(2.6560, device='cuda:0')
+validation accuracy: tensor(17.0701, device='cuda:0')%
+loss at step 92600: tensor(2.5716, device='cuda:0')
+loss at step 92800: tensor(2.5827, device='cuda:0')
+validation loss: tensor(2.6449, device='cuda:0')
+validation accuracy: tensor(16.5484, device='cuda:0')%
+loss at step 93000: tensor(2.5844, device='cuda:0')
+loss at step 93200: tensor(2.5822, device='cuda:0')
+validation loss: tensor(2.6495, device='cuda:0')
+validation accuracy: tensor(16.7623, device='cuda:0')%
+loss at step 93400: tensor(2.5697, device='cuda:0')
+loss at step 93600: tensor(2.5969, device='cuda:0')
+validation loss: tensor(2.6513, device='cuda:0')
+validation accuracy: tensor(16.7623, device='cuda:0')%
+loss at step 93800: tensor(2.5730, device='cuda:0')
+loss at step 94000: tensor(2.5835, device='cuda:0')
+validation loss: tensor(2.6502, device='cuda:0')
+validation accuracy: tensor(16.9084, device='cuda:0')%
+loss at step 94200: tensor(2.5934, device='cuda:0')
+loss at step 94400: tensor(2.5742, device='cuda:0')
+validation loss: tensor(2.6564, device='cuda:0')
+validation accuracy: tensor(16.6632, device='cuda:0')%
+loss at step 94600: tensor(2.6049, device='cuda:0')
+loss at step 94800: tensor(2.5845, device='cuda:0')
+validation loss: tensor(2.6613, device='cuda:0')
+validation accuracy: tensor(17.1066, device='cuda:0')%
+loss at step 95000: tensor(2.5930, device='cuda:0')
+loss at step 95200: tensor(2.5728, device='cuda:0')
