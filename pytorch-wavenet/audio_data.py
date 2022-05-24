@@ -19,7 +19,7 @@ class WavenetDataset(torch.utils.data.Dataset):
                  sampling_rate=16000,
                  mono=True,
                  normalize=False,
-                 dtype=np.uint8,
+                 dtype=np.float16,
                  train=True,
                  test_stride=100):
 
