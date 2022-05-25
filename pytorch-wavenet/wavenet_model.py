@@ -36,7 +36,8 @@ class WaveNetModel(nn.Module):
                  output_length=32,
                  kernel_size=2,
                  dtype=torch.FloatTensor,
-                 bias=False):
+                 bias=False,
+                 local_condition=False):
 
         super(WaveNetModel, self).__init__()
 
@@ -58,6 +59,9 @@ class WaveNetModel(nn.Module):
         # self.main_convs = nn.ModuleList()
         self.filter_convs = nn.ModuleList()
         self.gate_convs = nn.ModuleList()
+        if local_condition:
+            self.filter_local_convs = nn.ModuleList()
+            self.gate_local_convs = nn.ModuleList()
         self.residual_convs = nn.ModuleList()
         self.skip_convs = nn.ModuleList()
 
@@ -66,6 +70,11 @@ class WaveNetModel(nn.Module):
                                     out_channels=residual_channels,
                                     kernel_size=1,
                                     bias=bias)
+        if local_condition:
+            self.local_condition_start_conv = nn.Conv1d(in_channels=self.classes,
+                                                    out_channels=residual_channels,
+                                                    kernel_size=1,
+                                                    bias=bias)
 
         for b in range(blocks):
             additional_scope = kernel_size - 1
@@ -90,6 +99,17 @@ class WaveNetModel(nn.Module):
                                                  out_channels=dilation_channels,
                                                  kernel_size=kernel_size,
                                                  bias=bias))
+
+                if local_condition and b == 0 and i == 0:
+                    self.filter_local_convs.append(nn.Conv1d(in_channels=residual_channels,
+                                                            out_channels=dilation_channels,
+                                                            kernel_size=1, # TODO: is this correct?
+                                                            bias=bias))    # TODO: is this correct?
+
+                    self.gate_local_convs.append(nn.Conv1d(in_channels=residual_channels,
+                                                        out_channels=dilation_channels,
+                                                        kernel_size=1,   # TODO: is this correct?
+                                                        bias=bias))  # TODO: is this correct?
 
                 # 1x1 convolution for residual connection
                 self.residual_convs.append(nn.Conv1d(in_channels=dilation_channels,
@@ -122,10 +142,13 @@ class WaveNetModel(nn.Module):
         self.output_length = output_length
         self.receptive_field = receptive_field
 
-    def wavenet(self, input, dilation_func):
+    def wavenet(self, input, dilation_func, local_condition=None):
 
         x = self.start_conv(input)
         skip = 0
+
+        if local_condition:
+            y = self.local_condition_start_conv(local_condition)
 
         # WaveNet layers
         for i in range(self.blocks * self.layers):
@@ -142,12 +165,22 @@ class WaveNetModel(nn.Module):
             (dilation, init_dilation) = self.dilations[i]
 
             residual = dilation_func(x, dilation, init_dilation, i)
+            if local_condition and i == 0:
+                local_condition_residual = dilation_func(y, dilation, init_dilation, i)
 
             # dilated convolution
             filter = self.filter_convs[i](residual)
-            filter = torch.tanh(filter)
+            if local_condition and i == 0:
+                local_condition_filter = self.filter_local_convs[i](local_condition_residual)
+                filter = torch.tanh(filter + local_condition_filter)
+            else:
+                filter = torch.tanh(filter)
             gate = self.gate_convs[i](residual)
-            gate = torch.sigmoid(gate)
+            if local_condition and i == 0:
+                local_condition_gate = self.gate_local_convs[i](local_condition_residual)
+                torch.sigmoid(gate + local_condition_gate)
+            else:
+                gate = torch.sigmoid(gate)
             x = filter * gate
 
             # parametrized skip connection
