@@ -34,10 +34,11 @@ print('model: ', model)
 print('receptive field: ', model.receptive_field)
 print('parameter count: ', model.parameter_count())
 
-data = WavenetDataset(dataset_file='train_samples/bach_chaconne/dataset.npz',
+data = WavenetDataset(dataset_file='train_samples/midi_piano/CS230PianoRedo.npz',
                       item_length=model.receptive_field + model.output_length - 1,
                       target_length=model.output_length,
-                      file_location='train_samples/bach_chaconne',
+                      file_location='train_samples/midi_piano',
+                      tensor_ltype=ltype,
                       test_stride=500)
 print('the dataset has ' + str(len(data)) + ' items')
 
