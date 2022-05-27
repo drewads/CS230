@@ -19,7 +19,8 @@ class WavenetDataset(torch.utils.data.Dataset):
                  sampling_rate=16000,
                  mono=True,
                  normalize=False,
-                 dtype=np.float16,
+                 dtype=np.float32,
+                 tensor_ltype=None,
                  train=True,
                  test_stride=100):
 
@@ -41,6 +42,7 @@ class WavenetDataset(torch.utils.data.Dataset):
 
             self.sampling_rate = sampling_rate
             self.dtype = dtype
+            self.tensor_ltype = tensor_ltype
             self.create_dataset(file_location, dataset_file)
         else:
             # Unknown parameters of the stored dataset
@@ -50,6 +52,7 @@ class WavenetDataset(torch.utils.data.Dataset):
 
             self.sampling_rate = None
             self.dtype = None
+            self.tensor_ltype = tensor_ltype
 
         self.data = np.load(self.dataset_file, mmap_mode='r')
         self.start_samples = [0]
@@ -114,11 +117,12 @@ class WavenetDataset(torch.utils.data.Dataset):
             file2 = np.load(self.dataset_file, mmap_mode='r')['arr_' + str(file_index + 1)]
             sample1 = file1[position_in_file:]
             sample2 = file2[:end_position_in_next_file]
-            sample = np.concatenate((sample1, sample2))
-
-        example = torch.from_numpy(sample).type(torch.LongTensor)
+            sample = np.concatenate((sample1, sample2), dtype=np.float32)
+        
+        sample = (sample - 128.0) / 128.0
+        example = torch.from_numpy(sample).type(torch.FloatTensor)
         one_hot = torch.FloatTensor(self.classes, self._item_length).zero_()
-        one_hot.scatter_(0, example[:self._item_length].unsqueeze(0), 1.)
+        one_hot.scatter_(0, ((example[:self._item_length].unsqueeze(0) + 1) * 128.0).type(self.tensor_ltype), 1.) 
         target = example[-self.target_length:].unsqueeze(0)
         return one_hot, target
 
