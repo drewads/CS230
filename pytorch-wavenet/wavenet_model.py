@@ -103,12 +103,12 @@ class WaveNetModel(nn.Module):
                 if local_conditioning and b == 0 and i == 0:
                     self.filter_local_convs.append(nn.Conv1d(in_channels=residual_channels,
                                                             out_channels=dilation_channels,
-                                                            kernel_size=1, # TODO: is this correct?
+                                                            kernel_size=kernel_size, # TODO: is this correct?
                                                             bias=bias))    # TODO: is this correct?
 
                     self.gate_local_convs.append(nn.Conv1d(in_channels=residual_channels,
                                                         out_channels=dilation_channels,
-                                                        kernel_size=1,   # TODO: is this correct?
+                                                        kernel_size=kernel_size,   # TODO: is this correct?
                                                         bias=bias))  # TODO: is this correct?
 
                 # 1x1 convolution for residual connection
