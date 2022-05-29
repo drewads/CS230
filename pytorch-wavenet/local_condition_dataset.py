@@ -20,7 +20,7 @@ class LocalConditionedDataset(torch.utils.data.Dataset):
     if not self.local_condition:
       return x
 
-    local_condition = self.local_condition[index]
+    local_condition = self.local_condition[index][0]
     return x, local_condition
 
   def __len__(self):
