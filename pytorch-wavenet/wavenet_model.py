@@ -56,6 +56,7 @@ class WaveNetModel(nn.Module):
 
         self.dilations = []
         self.dilated_queues = []
+        self.local_conditioning_dilated_queues = []
         # self.main_convs = nn.ModuleList()
         self.filter_convs = nn.ModuleList()
         self.gate_convs = nn.ModuleList()
@@ -101,6 +102,13 @@ class WaveNetModel(nn.Module):
                                                  bias=bias))
 
                 if local_conditioning and b == 0 and i == 0:
+                    self.local_conditioning_dilated_queues.append(
+                        DilatedQueue(max_length=(kernel_size - 1) * new_dilation + 1,
+                                    num_channels=residual_channels,
+                                    dilation=new_dilation,
+                                    dtype=dtype)
+                    )
+
                     self.filter_local_convs.append(nn.Conv1d(in_channels=residual_channels,
                                                             out_channels=dilation_channels,
                                                             kernel_size=kernel_size, # TODO: is this correct?
@@ -164,9 +172,9 @@ class WaveNetModel(nn.Module):
 
             (dilation, init_dilation) = self.dilations[i]
 
-            residual = dilation_func(x, dilation, init_dilation, i)
+            residual = dilation_func(x, dilation, init_dilation, i, False)
             if (local_condition is not None) and i == 0:
-                local_condition_residual = dilation_func(y, dilation, init_dilation, i)
+                local_condition_residual = dilation_func(y, dilation, init_dilation, i, True)
 
             # dilated convolution
             filter = self.filter_convs[i](residual)
@@ -203,12 +211,12 @@ class WaveNetModel(nn.Module):
 
         return x
 
-    def wavenet_dilate(self, input, dilation, init_dilation, i):
+    def wavenet_dilate(self, input, dilation, init_dilation, i, local_conditioning):
         x = dilate(input, dilation, init_dilation)
         return x
 
-    def queue_dilate(self, input, dilation, init_dilation, i):
-        queue = self.dilated_queues[i]
+    def queue_dilate(self, input, dilation, init_dilation, i, local_conditioning):
+        queue = self.local_conditioning_dilated_queues[i] if local_conditioning else self.dilated_queues[i]
         queue.enqueue(input.data[0])
         x = queue.dequeue(num_deq=self.kernel_size,
                           dilation=dilation)
@@ -283,6 +291,8 @@ class WaveNetModel(nn.Module):
 
         # reset queues
         for queue in self.dilated_queues:
+            queue.reset()
+        for queue in self.local_conditioning_dilated_queues:
             queue.reset()
 
         num_given_samples = first_samples.size(0)
@@ -365,6 +375,8 @@ class WaveNetModel(nn.Module):
     def cpu(self, type=torch.FloatTensor):
         self.dtype = type
         for q in self.dilated_queues:
+            q.dtype = self.dtype
+        for q in self.local_conditioning_dilated_queues:
             q.dtype = self.dtype
         super().cpu()
 
