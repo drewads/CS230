@@ -35,14 +35,14 @@ print('model: ', model)
 print('receptive field: ', model.receptive_field)
 print('parameter count: ', model.parameter_count())
 
-waveform_data = WavenetDataset(dataset_file='train_samples/midi_piano/CS230PianoUbyte.npz',
+waveform_data = WavenetDataset(dataset_file='../CS230PianoUbyte.npz',
                       item_length=model.receptive_field + model.output_length - 1,
                       target_length=model.output_length,
                       file_location='train_samples/bach_chaconne',
                       test_stride=500)
 
 local_condition = None
-# local_condition = WavenetDataset(dataset_file='train_samples/midi_piano/CS230PianoUbyteFreqs.npz',
+# local_condition = WavenetDataset(dataset_file='../CS230PianoUbyteFreqs.npz',
 #                       item_length=model.receptive_field + model.output_length - 1,
 #                       target_length=model.output_length,
 #                       file_location='train_samples/midi_piano',
