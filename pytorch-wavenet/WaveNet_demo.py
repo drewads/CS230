@@ -38,15 +38,12 @@ print('parameter count: ', model.parameter_count())
 waveform_data = WavenetDataset(dataset_file='../CS230PianoUbyte.npz',
                       item_length=model.receptive_field + model.output_length - 1,
                       target_length=model.output_length,
-                      file_location='train_samples/bach_chaconne',
                       test_stride=500)
 
 # local_condition = None
 local_condition = WavenetDataset(dataset_file='../CS230PianoUbyteFreqs.npz',
                       item_length=model.receptive_field + model.output_length - 1,
                       target_length=model.output_length,
-                      file_location='train_samples/midi_piano',
-                      tensor_ltype=ltype,
                       test_stride=500)
 
 data = LocalConditionedDataset(waveform_data, local_condition, train=True, target_length=model.output_length)
