@@ -147,7 +147,7 @@ class WaveNetModel(nn.Module):
         x = self.start_conv(input)
         skip = 0
 
-        if local_condition:
+        if local_condition is not None:
             y = self.local_condition_start_conv(local_condition)
 
         # WaveNet layers
@@ -165,18 +165,18 @@ class WaveNetModel(nn.Module):
             (dilation, init_dilation) = self.dilations[i]
 
             residual = dilation_func(x, dilation, init_dilation, i)
-            if local_condition and i == 0:
+            if (local_condition is not None) and i == 0:
                 local_condition_residual = dilation_func(y, dilation, init_dilation, i)
 
             # dilated convolution
             filter = self.filter_convs[i](residual)
-            if local_condition and i == 0:
+            if (local_condition is not None) and i == 0:
                 local_condition_filter = self.filter_local_convs[i](local_condition_residual)
                 filter = torch.tanh(filter + local_condition_filter)
             else:
                 filter = torch.tanh(filter)
             gate = self.gate_convs[i](residual)
-            if local_condition and i == 0:
+            if (local_condition is not None) and i == 0:
                 local_condition_gate = self.gate_local_convs[i](local_condition_residual)
                 torch.sigmoid(gate + local_condition_gate)
             else:
@@ -298,7 +298,7 @@ class WaveNetModel(nn.Module):
                              local_condition=lc_input)
             input.zero_()
             input = input.scatter_(1, first_samples[i + 1:i + 2].view(1, -1, 1), 1.).view(1, self.classes, 1)
-            if local_condition:
+            if (local_condition is not None):
                 lc_input = lc_input.scatter_(1, local_condition[i + 1:i + 2].view(1, -1, 1), 1.).view(1, self.classes, 1)
 
             # progress feedback
@@ -340,7 +340,7 @@ class WaveNetModel(nn.Module):
             input.zero_()
             input = input.scatter_(1, x.view(1, -1, 1), 1.).view(1, self.classes, 1)
             i_a = i + num_given_samples
-            if local_condition:
+            if (local_condition is not None):
                 lc_input = lc_input.scatter_(1, local_condition[i_a + 1:i_a + 2].view(1, -1, 1), 1.).view(1, self.classes, 1)
 
             if (i+1) == 100:
