@@ -70,7 +70,7 @@ class WavenetTrainer:
                     x_lc = None
                 x = Variable(x.type(self.dtype))
                 target = Variable(target.view(-1).type(self.ltype))
-                if x_lc:
+                if x_lc is not None:
                     x_lc = Variable(x_lc.type(self.dtype))
 
                 output = self.model(x, x_lc)
@@ -110,7 +110,7 @@ class WavenetTrainer:
                 x_lc = None
             x = Variable(x.type(self.dtype))
             target = Variable(target.view(-1).type(self.ltype))
-            if x_lc:
+            if x_lc is not None:
                 x_lc = Variable(x.type(self.dtype))
 
             output = self.model(x, x_lc)
