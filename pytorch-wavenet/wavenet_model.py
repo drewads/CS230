@@ -216,9 +216,10 @@ class WaveNetModel(nn.Module):
 
         return x
 
-    def forward(self, input):
+    def forward(self, input, local_condition):
         x = self.wavenet(input,
-                         dilation_func=self.wavenet_dilate)
+                         dilation_func=self.wavenet_dilate,
+                         local_condition=local_condition)
 
         # reshape output
         [n, c, l] = x.size()
@@ -273,7 +274,8 @@ class WaveNetModel(nn.Module):
                       temperature=1.,
                       regularize=0.,
                       progress_callback=None,
-                      progress_interval=100):
+                      progress_interval=100,
+                      local_condition=None):
         self.eval()
         if first_samples is None:
             first_samples = torch.LongTensor(1).zero_() + (self.classes // 2)
@@ -292,9 +294,12 @@ class WaveNetModel(nn.Module):
         # fill queues with given samples
         for i in range(num_given_samples - 1):
             x = self.wavenet(input,
-                             dilation_func=self.queue_dilate)
+                             dilation_func=self.queue_dilate,
+                             local_condition=lc_input)
             input.zero_()
             input = input.scatter_(1, first_samples[i + 1:i + 2].view(1, -1, 1), 1.).view(1, self.classes, 1)
+            if local_condition:
+                lc_input = lc_input.scatter_(1, local_condition[i + 1:i + 2].view(1, -1, 1), 1.).view(1, self.classes, 1)
 
             # progress feedback
             if i % progress_interval == 0:
@@ -308,7 +313,8 @@ class WaveNetModel(nn.Module):
         tic = time.time()
         for i in range(num_samples):
             x = self.wavenet(input,
-                             dilation_func=self.queue_dilate).squeeze()
+                             dilation_func=self.queue_dilate,
+                             local_condition=lc_input).squeeze()
 
             x -= regularizer
 
@@ -333,6 +339,9 @@ class WaveNetModel(nn.Module):
             x = Variable(torch.from_numpy(x).type(torch.LongTensor))
             input.zero_()
             input = input.scatter_(1, x.view(1, -1, 1), 1.).view(1, self.classes, 1)
+            i_a = i + num_given_samples
+            if local_condition:
+                lc_input = lc_input.scatter_(1, local_condition[i_a + 1:i_a + 2].view(1, -1, 1), 1.).view(1, self.classes, 1)
 
             if (i+1) == 100:
                 toc = time.time()

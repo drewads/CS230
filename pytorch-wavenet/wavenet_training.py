@@ -7,6 +7,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 from model_logging import Logger
 from wavenet_modules import *
+from local_condition_dataset import LocalConditionedDataset
 
 
 def print_last_loss(opt):
@@ -61,11 +62,13 @@ class WavenetTrainer:
         for current_epoch in range(epochs):
             print("epoch", current_epoch)
             tic = time.time()
-            for (x, target) in iter(self.dataloader):
+            for ((x, target), x_lc) in iter(self.dataloader):
                 x = Variable(x.type(self.dtype))
                 target = Variable(target.view(-1).type(self.ltype))
+                if x_lc:
+                    x_lc = Variable(x_lc.type(self.dtype))
 
-                output = self.model(x)
+                output = self.model(x, x_lc)
                 loss = F.cross_entropy(output.squeeze(), target.squeeze())
                 self.optimizer.zero_grad()
                 loss.backward()
@@ -91,14 +94,16 @@ class WavenetTrainer:
 
     def validate(self):
         self.model.eval()
-        self.dataset.train = False
+        self.dataset.set_train(False)
         total_loss = 0
         accurate_classifications = 0
-        for (x, target) in iter(self.dataloader):
+        for ((x, target), x_lc) in iter(self.dataloader):
             x = Variable(x.type(self.dtype))
             target = Variable(target.view(-1).type(self.ltype))
+            if x_lc:
+                x_lc = Variable(x.type(self.dtype))
 
-            output = self.model(x)
+            output = self.model(x, x_lc)
             loss = F.cross_entropy(output.squeeze(), target.squeeze())
             total_loss += loss.data
 
@@ -108,8 +113,8 @@ class WavenetTrainer:
         # print("validate model with " + str(len(self.dataloader.dataset)) + " samples")
         # print("average loss: ", total_loss / len(self.dataloader))
         avg_loss = total_loss / len(self.dataloader)
-        avg_accuracy = accurate_classifications / (len(self.dataset)*self.dataset.target_length)
-        self.dataset.train = True
+        avg_accuracy = accurate_classifications / (len(self.dataset)*self.dataset.get_target_length())
+        self.dataset.set_train(True)
         self.model.train()
         return avg_loss, avg_accuracy
 

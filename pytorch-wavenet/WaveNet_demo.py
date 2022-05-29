@@ -3,6 +3,7 @@ from wavenet_model import *
 from audio_data import WavenetDataset
 from wavenet_training import *
 from model_logging import *
+from local_condition_dataset import LocalConditionedDataset
 
 # initialize cuda option
 dtype = torch.FloatTensor # data type
@@ -34,11 +35,21 @@ print('model: ', model)
 print('receptive field: ', model.receptive_field)
 print('parameter count: ', model.parameter_count())
 
-data = WavenetDataset(dataset_file='train_samples/bach_chaconne/dataset.npz',
+waveform_data = WavenetDataset(dataset_file='train_samples/midi_piano/CS230PianoUbyte.npz',
                       item_length=model.receptive_field + model.output_length - 1,
                       target_length=model.output_length,
                       file_location='train_samples/bach_chaconne',
                       test_stride=500)
+
+local_condition = None
+# local_condition = WavenetDataset(dataset_file='train_samples/midi_piano/CS230PianoUbyteFreqs.npz',
+#                       item_length=model.receptive_field + model.output_length - 1,
+#                       target_length=model.output_length,
+#                       file_location='train_samples/midi_piano',
+#                       tensor_ltype=ltype,
+#                       test_stride=500)
+
+data = LocalConditionedDataset(waveform_data, local_condition)
 print('the dataset has ' + str(len(data)) + ' items')
 
 def generate_and_log_samples(step):
@@ -83,8 +94,12 @@ print('start training...')
 trainer.train(batch_size=16,
               epochs=10)
 
-start_data = data[250000][0] # use start data from the data set
+start_data, condition_data = data[len(data) // 2] # use start data from the data set. Halfway through the file.
+start_data = start_data[0]
 start_data = torch.max(start_data, 0)[1] # convert one hot vectors to integers
+
+if condition_data:
+    condition_data = torch.max(condition_data, 0)[1] # convert one hot vectors to integers
 
 def prog_callback(step, total_steps):
     print(str(100 * step // total_steps) + "% generated")
@@ -94,7 +109,8 @@ generated = model.generate_fast(num_samples=160000,
                                  progress_callback=prog_callback,
                                  progress_interval=1000,
                                  temperature=1.0,
-                                 regularize=0.)
+                                 regularize=0.,
+                                 local_condition=condition_data)
 
 import IPython.display as ipd
 
