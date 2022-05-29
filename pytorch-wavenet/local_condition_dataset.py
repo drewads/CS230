@@ -18,7 +18,7 @@ class LocalConditionedDataset(torch.utils.data.Dataset):
   def __getitem__(self, index):
     x = self.data[index]
     if not self.local_condition:
-      return x, None
+      return x
 
     local_condition = self.local_condition[index]
     return x, local_condition

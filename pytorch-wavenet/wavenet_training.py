@@ -62,7 +62,12 @@ class WavenetTrainer:
         for current_epoch in range(epochs):
             print("epoch", current_epoch)
             tic = time.time()
-            for ((x, target), x_lc) in iter(self.dataloader):
+            for item in iter(self.dataloader):
+                if self.dataset.local_condition:
+                    ((x, target), x_lc) = item
+                else:
+                    (x, target) = item
+                    x_lc = None
                 x = Variable(x.type(self.dtype))
                 target = Variable(target.view(-1).type(self.ltype))
                 if x_lc:
@@ -97,7 +102,12 @@ class WavenetTrainer:
         self.dataset.set_train(False)
         total_loss = 0
         accurate_classifications = 0
-        for ((x, target), x_lc) in iter(self.dataloader):
+        for item in iter(self.dataloader):
+            if self.dataset.local_condition:
+                ((x, target), x_lc) = item
+            else:
+                (x, target) = item
+                x_lc = None
             x = Variable(x.type(self.dtype))
             target = Variable(target.view(-1).type(self.ltype))
             if x_lc:
