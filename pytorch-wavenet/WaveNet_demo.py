@@ -17,6 +17,8 @@ if use_cuda:
 else:
     print('no gpu')
 
+local_conditioning = True
+
 model = WaveNetModel(layers=10,
                      blocks=3,
                      dilation_channels=32,
@@ -25,7 +27,8 @@ model = WaveNetModel(layers=10,
                      end_channels=512,
                      output_length=16,
                      dtype=dtype,
-                     bias=True)
+                     bias=True,
+                     local_conditioning = local_conditioning)
 # model = load_latest_model_from('snapshots', use_cuda=use_cuda)
 
 if use_cuda:
@@ -40,11 +43,13 @@ waveform_data = WavenetDataset(dataset_file='../CS230PianoUbyte.npz',
                       target_length=model.output_length,
                       test_stride=500)
 
-# local_condition = None
-local_condition = WavenetDataset(dataset_file='../CS230PianoUbyteFreqs.npz',
-                      item_length=model.receptive_field + model.output_length - 1,
-                      target_length=model.output_length,
-                      test_stride=500)
+local_condition = None
+
+if local_conditioning:
+    local_condition = WavenetDataset(dataset_file='../CS230PianoUbyteFreqs.npz',
+                        item_length=model.receptive_field + model.output_length - 1,
+                        target_length=model.output_length,
+                        test_stride=500)
 
 data = LocalConditionedDataset(waveform_data, local_condition, train=True, target_length=model.output_length)
 print('the dataset has ' + str(len(data)) + ' items')

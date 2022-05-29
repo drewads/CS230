@@ -37,7 +37,7 @@ class WaveNetModel(nn.Module):
                  kernel_size=2,
                  dtype=torch.FloatTensor,
                  bias=False,
-                 local_condition=False):
+                 local_conditioning=False):
 
         super(WaveNetModel, self).__init__()
 
@@ -59,7 +59,7 @@ class WaveNetModel(nn.Module):
         # self.main_convs = nn.ModuleList()
         self.filter_convs = nn.ModuleList()
         self.gate_convs = nn.ModuleList()
-        if local_condition:
+        if local_conditioning:
             self.filter_local_convs = nn.ModuleList()
             self.gate_local_convs = nn.ModuleList()
         self.residual_convs = nn.ModuleList()
@@ -70,7 +70,7 @@ class WaveNetModel(nn.Module):
                                     out_channels=residual_channels,
                                     kernel_size=1,
                                     bias=bias)
-        if local_condition:
+        if local_conditioning:
             self.local_condition_start_conv = nn.Conv1d(in_channels=self.classes,
                                                     out_channels=residual_channels,
                                                     kernel_size=1,
@@ -100,7 +100,7 @@ class WaveNetModel(nn.Module):
                                                  kernel_size=kernel_size,
                                                  bias=bias))
 
-                if local_condition and b == 0 and i == 0:
+                if local_conditioning and b == 0 and i == 0:
                     self.filter_local_convs.append(nn.Conv1d(in_channels=residual_channels,
                                                             out_channels=dilation_channels,
                                                             kernel_size=1, # TODO: is this correct?
