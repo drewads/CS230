@@ -101,7 +101,7 @@ class WaveNetModel(nn.Module):
                                                  kernel_size=kernel_size,
                                                  bias=bias))
 
-                if local_conditioning and b == 0 and i == 0:
+                if local_conditioning:
                     self.local_conditioning_dilated_queues.append(
                         DilatedQueue(max_length=(kernel_size - 1) * new_dilation + 1,
                                     num_channels=residual_channels,
@@ -173,18 +173,18 @@ class WaveNetModel(nn.Module):
             (dilation, init_dilation) = self.dilations[i]
 
             residual = dilation_func(x, dilation, init_dilation, i, False)
-            if (local_condition is not None) and i == 0:
+            if local_condition is not None:
                 local_condition_residual = dilation_func(y, dilation, init_dilation, i, True)
 
             # dilated convolution
             filter = self.filter_convs[i](residual)
-            if (local_condition is not None) and i == 0:
+            if local_condition is not None:
                 local_condition_filter = self.filter_local_convs[i](local_condition_residual)
                 filter = torch.tanh(filter + local_condition_filter)
             else:
                 filter = torch.tanh(filter)
             gate = self.gate_convs[i](residual)
-            if (local_condition is not None) and i == 0:
+            if local_condition is not None:
                 local_condition_gate = self.gate_local_convs[i](local_condition_residual)
                 torch.sigmoid(gate + local_condition_gate)
             else:
