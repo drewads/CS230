@@ -11,13 +11,13 @@ class LocalConditionedDataset(torch.utils.data.Dataset):
     self.data.train = self.train
     self.data.target_length = target_length
 
-    if self.local_condition:
+    if self.local_condition is not None:
       self.local_condition.train = self.train
       self.local_condition.target_length = self.target_length
 
   def __getitem__(self, index):
     x = self.data[index]
-    if not self.local_condition:
+    if self.local_condition is None:
       return x
 
     local_condition = self.local_condition[index][0]
@@ -29,7 +29,7 @@ class LocalConditionedDataset(torch.utils.data.Dataset):
   def set_train(self, train):
     self.train = train
     self.data.train = self.train
-    if self.local_condition:
+    if self.local_condition is not None:
       self.local_condition.train = self.train
   
   def get_train(self):
