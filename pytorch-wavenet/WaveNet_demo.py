@@ -49,7 +49,7 @@ local_condition = None
 #                       tensor_ltype=ltype,
 #                       test_stride=500)
 
-data = LocalConditionedDataset(waveform_data, local_condition)
+data = LocalConditionedDataset(waveform_data, local_condition, train=True, target_length=model.output_length)
 print('the dataset has ' + str(len(data)) + ' items')
 
 def generate_and_log_samples(step):
