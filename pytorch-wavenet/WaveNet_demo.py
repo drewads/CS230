@@ -96,11 +96,16 @@ print('start training...')
 trainer.train(batch_size=16,
               epochs=10)
 
-start_data, condition_data = data[len(data) // 2] # use start data from the data set. Halfway through the file.
+start_inputs = data[len(data) // 2] # use start data from the data set. Halfway through the file.
+condition_data = None
+if local_conditioning:
+    start_data, condition_data = start_inputs
+else:
+    start_data = start_inputs
 start_data = start_data[0]
 start_data = torch.max(start_data, 0)[1] # convert one hot vectors to integers
 
-if condition_data:
+if condition_data is not None:
     condition_data = torch.max(condition_data, 0)[1] # convert one hot vectors to integers
 
 def prog_callback(step, total_steps):

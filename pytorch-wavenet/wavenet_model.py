@@ -300,6 +300,9 @@ class WaveNetModel(nn.Module):
 
         input = Variable(torch.FloatTensor(1, self.classes, 1).zero_())
         input = input.scatter_(1, first_samples[0:1].view(1, -1, 1), 1.)
+        if (local_condition is not None):
+            lc_input = Variable(torch.FloatTensor(1, self.classes, 1).zero_())
+            lc_input = lc_input.scatter_(1, local_condition[0:1].view(1, -1, 1), 1.)
 
         # fill queues with given samples
         for i in range(num_given_samples - 1):
