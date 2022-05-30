@@ -175,6 +175,7 @@ class WaveNetModel(nn.Module):
             residual = dilation_func(x, dilation, init_dilation, i, False)
             if local_condition is not None:
                 local_condition_residual = dilation_func(y, dilation, init_dilation, i, True)
+                y = local_condition_residual[:, :, (self.kernel_size - 1):]
 
             # dilated convolution
             filter = self.filter_convs[i](residual)
