@@ -1,4 +1,4 @@
-# CS230\
+# CS230
 Code files changed/created:
 WaveNet_demo.py,
 wavenet_model.py,
