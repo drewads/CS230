@@ -18,7 +18,7 @@ else:
     print('no gpu')
 
 local_conditioning = True
-
+'''
 model = WaveNetModel(layers=10,
                      blocks=3,
                      dilation_channels=32,
@@ -29,7 +29,8 @@ model = WaveNetModel(layers=10,
                      dtype=dtype,
                      bias=True,
                      local_conditioning = local_conditioning)
-# model = load_latest_model_from('snapshots', use_cuda=use_cuda)
+'''
+model = load_latest_model_from('snapshots', use_cuda=use_cuda)
 
 if use_cuda:
   model.cuda()
@@ -45,8 +46,8 @@ waveform_data = WavenetDataset(dataset_file='../CS230PianoUbyte.npz',
 
 local_condition = None
 
-if local_conditioning:
-    local_condition = WavenetDataset(dataset_file='../CS230PianoUbyteFreqs.npz',
+if local_conditioning: 
+    local_condition = WavenetDataset(dataset_file='../CS230PianoUbyteFreqsRest.npz',
                         item_length=model.receptive_field + model.output_length - 1,
                         target_length=model.output_length,
                         test_stride=500)
@@ -81,7 +82,7 @@ def generate_and_log_samples(step):
 logger = Logger(log_interval=200,
                 validation_interval=400,
                 generate_interval=1000)
-
+'''
 trainer = WavenetTrainer(model=model,
                          dataset=data,
                          lr=0.001,
@@ -95,8 +96,8 @@ trainer = WavenetTrainer(model=model,
 print('start training...')
 trainer.train(batch_size=16,
               epochs=10)
-
-start_inputs = data[len(data) // 2] # use start data from the data set. Halfway through the file.
+'''
+start_inputs = data[len(data) // 4] # use start data from the data set. Halfway through the file.
 condition_data = None
 if local_conditioning:
     start_data, condition_data = start_inputs
@@ -111,15 +112,20 @@ if condition_data is not None:
 def prog_callback(step, total_steps):
     print(str(100 * step // total_steps) + "% generated")
 
+
+torch.set_printoptions(threshold=1000000)
+print(condition_data)
 generated = model.generate_fast(num_samples=160000,
                                  first_samples=start_data,
                                  progress_callback=prog_callback,
                                  progress_interval=1000,
                                  temperature=1.0,
-                                 regularize=0.,
+                                 regularize=0.5,
                                  local_condition=condition_data)
 
 import IPython.display as ipd
 
 ipd.Audio(generated, rate=16000)
 
+from  scipy.io import wavfile 
+wavfile.write('chaconne_model_2022-05-30_21' + '_' + 'first_block' + '_' + '160000' + 'samps' + 'UByte' + '.wav', 16000, generated)

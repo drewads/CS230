@@ -3,7 +3,7 @@ import numpy as np
 from scipy.io.wavfile import read, write
 
 wav_in_filepath = '../../../Downloads/CS230Piano.wav'  # Need to change this
-npz_filepath = 'CS230Piano.npz'
+npz_filepath = 'CS230PianoUbyteFreqs.npz'
 wav_out_filepath = 'CS230PianoTransformed.wav'
 sample_rate_out = 0 # Need to change this
 
@@ -25,7 +25,9 @@ def wav_to_npz():
 def npz_to_wav():
   arr = np.load(npz_filepath)
   arr = arr['arr_0']
-  write(wav_out_filepath, sample_rate_out, arr)
+  # write(wav_out_filepath, sample_rate_out, arr)
+  # arr[len(arr) // 4 - 4500 :] = 0
+  arr_to_npz('CS230PianoUbyteFreqsRest.npz', arr)
 
 # wav_to_npz()
-# npz_to_wav()
+npz_to_wav()
