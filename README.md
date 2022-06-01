@@ -1,5 +1,5 @@
 # CS230
-Look at local_conditioning_first_block branch
+Look at local_conditioning_first_block branch.
 Code files changed/created:
 WaveNet_demo.py,
 wavenet_model.py,
